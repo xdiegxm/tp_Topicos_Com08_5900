@@ -49,7 +49,7 @@ int ValidarEstado(char e);
 **                FUNCIONES STRING                        *
 ***********************************************************/
 void str_toupper(char* str);
-bool normalizar_apellido_nombre(const char *input_str, char *output_str, size_t max1);
+void normalizar_apellido_nombre(t_miembro *miembro_ptr);
 /**********************************************************
 *                VALIDACION   FECHA                       *
 ***********************************************************/
