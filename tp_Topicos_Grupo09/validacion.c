@@ -49,105 +49,67 @@ void str_toupper(char* str){
         str++;
     }
 }
-// aclaracion: input_str seria un puntero al dato extraido del archivo, output_str es un buffer donde hay espacio para poner el string y max es el define de MAX_APENOM
-bool normalizar_apellido_nombre(const char *input_str, char *output_str, size_t max)
+
+void normalizar_apellido_nombre(t_miembro *miembro_ptr)
 {
-    if (input_str==NULL || *input_str == '\0')
-        return false;
+  char buffer_temporal[MAX_APENOM];
+  char *fin=miembro_ptr->ApellidosNombres;
+  char *lectura=fin;
+  char *escritura=buffer_temporal;
 
-    const char *lectura=input_str;
-    char *escritura=output_str;
-    char *inicio=output_str;
+  bool nueva_palabra=true;
 
-    bool nueva_palabra=true;
+  while(*lectura==' ')
+    lectura++;
 
-    while (*lectura!='\0'&&(size_t)(escritura-inicio)<max-1)
-    {
-        char AUX=*lectura;
-
-        if (isspace(AUX))
-        {
-            if (escritura>inicio&&!isspace(*(escritura - 1)))
-            {
-                *escritura=' ';
+  while(*lectura!='\0')
+  {
+      if (isspace(*lectura)) {
+            if (!isspace(*(escritura - 1))) {
+                *escritura = ' ';
                 escritura++;
                 nueva_palabra = true;
             }
-        }
-        else
-        {
-
-            if (nueva_palabra)
-            {
-                *escritura=toupper(AUX);
-                nueva_palabra=false;
+        } else {
+            if (nueva_palabra) {
+                *escritura = toupper(*lectura);
+                nueva_palabra = false;
+            } else {
+                *escritura = tolower(*lectura);
             }
-            else
-                *escritura=tolower(AUX);
             escritura++;
         }
         lectura++;
     }
-    if (*lectura!='\0') return false;
-
-    while (escritura>inicio&&isspace(*(escritura-1)))
-    {
+    while (escritura > buffer_temporal && isspace(*(escritura - 1))) {
         escritura--;
     }
-    *escritura ='\0';
+    *escritura='\0';
+    char *comma=strchr(buffer_temporal,',');
 
-
-    char *comma=NULL;
-    char *temp=output_str;
-    while (*temp!='\0')
+    if(comma==NULL)
     {
-        if (*temp==',')
-        {
-            comma=temp;
-            break;
+        char *primer_espacio=strchr(buffer_temporal,' ');
+
+        if(primer_espacio!=NULL){
+            escritura=buffer_temporal+strlen(buffer_temporal);
+            memmove(primer_espacio+2,primer_espacio,(escritura-primer_espacio)+1);
+
+            *primer_espacio=',';
+            *(primer_espacio+1)=' ';
         }
-        temp++;
+    }else{
+        if (*(comma+ 1) != ' ') {
+            memmove(comma + 2, comma + 1, strlen(comma));
+            *(comma + 1) = ' ';
+             *(comma+2)=toupper(*(comma+2));
+         }
     }
-    if (comma==NULL)
-    {
-        char *espacio_despues_primera_palabra=NULL;
-        temp=output_str;
 
-        while (*temp!='\0')
-        {
-            if (isspace(*temp))
-            {
-                espacio_despues_primera_palabra= temp;
-                break;
-            }
-            temp++;
-        }
+    strncpy(fin, buffer_temporal, MAX_APENOM);
+    *(fin+MAX_APENOM - 1) = '\0';
+  }
 
-        if (espacio_despues_primera_palabra!=NULL)
-        {
-            escritura=inicio+strlen(inicio);
-
-            if ((size_t)(escritura-inicio)+2>=max) return false;
-            memmove(espacio_despues_primera_palabra+2,espacio_despues_primera_palabra,(escritura-espacio_despues_primera_palabra)+1);
-            *espacio_despues_primera_palabra=',';
-            *(espacio_despues_primera_palabra+1) = ' ';
-        }
-        else
-        {
-            if ((size_t)(escritura-inicio)+2>= max) return false;
-
-            *escritura = ',';
-            escritura++;
-            *escritura = ' ';
-            escritura++;
-            *escritura = '\0';
-        }
-    }
-    if (strlen(output_str) >= max)
-        return false;
-
-    return true;
-}
 /**********************************************************
 *                VALIDACION   FECHA                       *
 ***********************************************************/
