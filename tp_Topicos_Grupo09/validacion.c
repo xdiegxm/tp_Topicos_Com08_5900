@@ -40,6 +40,50 @@ int validar_Mail(const char* mail){
         return FALSE;
     return TRUE;
 }
+int Validar_Categoria(const char *categ, const t_Fecha *fechaNac, const t_Fecha *fechaProc){
+    t_Fecha edad = difFechas(fechaNac, fechaProc);
+
+    if(edad.anio<18)
+        return(strcmp(categ,"MENOR")==0)? TRUE:FALSE;
+    else
+        return(strcmp(categ,"ADULTO")==0)? TRUE:FALSE;
+}
+int Validar_MailTutor(const char *mail, const char *categ){
+
+    if(strcmp(categ,"MENOR")==0)
+       return validar_Mail(mail);
+
+    return (mail==NULL || strlen(mail)==0)? TRUE:FALSE;
+}
+int Validar_Afiliacion(const t_Fecha *fechaAfil, const t_Fecha *fechaNac, const t_Fecha *fechaProc){
+
+    if(!validar_Fecha(fechaAfil))
+        return FALSE;
+    if(difFechas(fechaAfil,fechaProc).anio<0)
+        return FALSE;
+    if(difFechas(fechaAfil,fechaNac).anio>=0)
+        return FALSE;
+
+    return TRUE;
+}
+int Validar_UltimaCuota(const t_Fecha *fechaUltCuota, const t_Fecha *fechaAfil, const t_Fecha *fechaProc){
+
+    if(difFechas(fechaUltCuota,fechaAfil).anio>=0)
+        return FALSE;
+    if(difFechas(fechaUltCuota,fechaProc).anio<0)
+        return FALSE;
+
+    return TRUE;
+}
+int Validar_Nacimiento(const t_Fecha *fechaNac, const t_Fecha *fechaProc){
+    if(!validar_Fecha(fechaNac))
+        return FALSE;
+    if(difFechas(fechaNac,fechaProc).anio<10)
+        return FALSE;
+
+    return TRUE;
+}
+
 /**********************************************************
 **                FUNCIONES STRING                        *
 ***********************************************************/
@@ -50,7 +94,7 @@ void str_toupper(char* str){
     }
 }
 
-void normalizar_apellido_nombre(t_miembro *miembro_ptr)
+void normalizar_apellido_nombre(t_Miembro *miembro_ptr)
 {
   char buffer_temporal[MAX_APENOM];
   char *fin=miembro_ptr->ApellidosNombres;
@@ -134,4 +178,17 @@ t_Fecha difFechas(const t_Fecha *fecIni, const t_Fecha *fecFin){
     edad.anio -= fecIni->anio;
     return edad;
 }
+int validar_Fecha(const t_Fecha *fecha){
+    static const char dias[2][13] = {
+        { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
+        { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }};
 
+    if(fecha->anio<1900 || fecha->anio>9999)
+        return FALSE;
+    if(fecha->mes<1 || fecha->mes>12)
+        return FALSE;
+    if(fecha->dia<1 || fecha->dia> dias[anioBisiesto(fecha->anio)][fecha->mes])
+        return FALSE;
+
+    return TRUE;
+}

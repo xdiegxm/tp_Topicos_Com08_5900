@@ -45,14 +45,20 @@ int ValidarDni(long dni);
 int ValidarSexo(char s);
 int validar_Mail(const char* mail);
 int ValidarEstado(char e);
+int Validar_Categoria(const char *categoria, const t_Fecha *fechaNac, const t_Fecha *fechaProc);
+int Validar_MailTutor(const char *mail, const char *categoria);
+int Validar_Afiliacion(const t_Fecha *fechaAfil, const t_Fecha *fechaNac, const t_Fecha *fechaProc);
+int Validar_UltimaCuota(const t_Fecha *fechaUltCuota, const t_Fecha *fechaAfil, const t_Fecha *fechaProc);
+int Validar_Nacimiento(const t_Fecha *fechaNacimiento, const t_Fecha *fechaProc);
 /**********************************************************
 **                FUNCIONES STRING                        *
 ***********************************************************/
 void str_toupper(char* str);
-void normalizar_apellido_nombre(t_miembro *miembro_ptr);
+void normalizar_apellido_nombre(t_Miembro *miembro_ptr);
 /**********************************************************
 *                VALIDACION   FECHA                       *
 ***********************************************************/
 int anioBisiesto(int anio);
 t_Fecha difFechas(const t_Fecha *fecIni, const t_Fecha *fecFin);
+int validar_Fecha(const t_Fecha *fecha);
 #endif // VALIDACION_H_INCLUDED
