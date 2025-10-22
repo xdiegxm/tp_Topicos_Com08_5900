@@ -1,14 +1,9 @@
 /// ARCHIVO BINARIO PARTE 1
-#define TAM_LINEA 500
-#define TODO_OK 0
-#define ERR_ARCHIVO 1
-#define ERR_MEMORIA 2
-#define ERR_LINEA_LARGA 3
+#include "validacion.h"
+#include "funciones.h"
 
-typedef int (*TxtABin)(const char* linea, void* reg);
-typedef bool (*EsErrorFatal)(int cod);
 
-int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, size_t tamReg, TxtABin txtABin, EsErrorFatal esErrorFatal) {
+int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, const char* nombreArchError, size_t tamReg, const t_Fecha* fechaProceso, TxtABin txtABin, EsErrorFatal esErrorFatal) {
     FILE* pTxt = fopen(nombreArchTxt, "rt");
 
     if(!pTxt) {
@@ -27,10 +22,17 @@ int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, size_
     char linea[TAM_LINEA + 1];
     int ret = TODO_OK;
     while(!esErrorFatal(ret) && fgets(linea, TAM_LINEA, pTxt)) {
-        ret = txtABin(linea, reg);
+        ret = txtABin(linea, reg, fechaProceso);
 
         if(ret == TODO_OK) {
             fwrite(reg, tamReg, 1, pBin);
+        } else {
+            if(ret != TODO_OK && ret != ERR_LINEA_LARGA) {
+                char mensaje[30];
+                strcpy(mensaje, obtenerMensajeError(ret));
+
+                guardarRegistroError(nombreArchError, reg, tamReg, mensaje);
+            }
         }
     }
 
@@ -41,7 +43,7 @@ int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, size_
     return TODO_OK;
 }
 
-int txtABin(const char* linea, void* reg) {
+int txtABin(const char* linea, void* reg, const t_Fecha* fechaProceso) {
     t_Miembro* miembro = reg;
 
     char* act = strchr(linea, '\n');
@@ -60,7 +62,7 @@ int txtABin(const char* linea, void* reg) {
     *act = '\0';
     act = strrchr(linea, '|');
     strncpy(miembro->Plan, act + 1, MAX_PLAN);
-    miembro->Plan[MAX_PLAN] = '\0';
+    // miembro->Plan[MAX_PLAN] = '\0';
 
     // Estado
     *act = '\0';
@@ -70,18 +72,18 @@ int txtABin(const char* linea, void* reg) {
     // Fecha Ultima Cuota Paga
     *act = '\0';
     act = strrchr(linea, '|');
-    sscanf(act + 1, "%d/%d/%d", &miembro->FechaUltimaCuotaPaga.dia, &miembro->FechaUltimaCuotaPaga.mes, &miembro->FechaUltimaCuotaPaga.anio);
+    sscanf(act + 1, "%d-%d-%d", &miembro->FechaUltimaCuotaPaga.anio, &miembro->FechaUltimaCuotaPaga.mes, &miembro->FechaUltimaCuotaPaga.dia);
 
     // Categoria
     *act = '\0';
     act = strrchr(linea, '|');
     strncpy(miembro->Categoria, act + 1, MAX_CAT);
-    miembro->Categoria[MAX_CAT] = '\0';
+    // miembro->Categoria[MAX_CAT] = '\0';
 
     // Fecha Afiliacion
     *act = '\0';
     act = strrchr(linea, '|');
-    sscanf(act + 1, "%d/%d/%d", &miembro->FechaAfiliacion.dia, &miembro->FechaAfiliacion.mes, &miembro->FechaAfiliacion.anio);
+    sscanf(act + 1, "%d-%d-%d", &miembro->FechaAfiliacion.anio, &miembro->FechaAfiliacion.mes, &miembro->FechaAfiliacion.dia);
 
     // Sexo
     *act = '\0';
@@ -91,18 +93,26 @@ int txtABin(const char* linea, void* reg) {
     // Fecha Nacimiento
     *act = '\0';
     act = strrchr(linea, '|');
-    sscanf(act + 1, "%d/%d/%d", &miembro->FechaNacimiento.dia, &miembro->FechaNacimiento.mes, &miembro->FechaNacimiento.anio);
+    sscanf(act + 1, "%d-%d-%d", &miembro->FechaNacimiento.anio, &miembro->FechaNacimiento.mes, &miembro->FechaNacimiento.dia);
+
+    // Fecha Proceso
+    miembro->FechaProceso.anio = fechaProceso->anio;
+    miembro->FechaProceso.mes = fechaProceso->mes;
+    miembro->FechaProceso.dia = fechaProceso->dia;
 
     // AyN
     *act = '\0';
     act = strrchr(linea, '|');
     strncpy(miembro->ApellidosNombres, act + 1, MAX_APENOM);
+    normalizar_apellido_nombre(miembro);
 
     // DNI
     *act = '\0';
-    sscanf(linea, "%d", &miembro->DNI);
+    sscanf(linea, "%ld", &miembro->DNI);
 
-    return TODO_OK;
+    int ret = validarMiembro(miembro);
+
+    return ret;
 }
 
 bool esErrorFatal(int cod)
@@ -117,74 +127,136 @@ bool esErrorFatal(int cod)
     }
 }
 
-int leerArchivoBinValidar(const char* nombreArchBin) {
-    FILE* pBin = fopen(nombreArchBin, "rb");
+char* obtenerMensajeError(int ret) {
+   switch(ret) {
+    case ERR_DNI:
+        return "Dni invalido";
+
+    case ERR_NAC:
+        return "Fecha nacimiento invalido";
+
+    case ERR_SEXO:
+        return "Sexo invalido";
+
+    case ERR_AFIL:
+        return "Fecha afiliacion invalido";
+
+    case ERR_CAT:
+        return "Categoria invalido";
+
+    case ERR_ULT_CUOTA:
+        return "Fecha ultima cuota invalido";
+
+    case ERR_ESTADO:
+        return "Estado invalido";
+
+    case ERR_PLAN:
+        return "Plan invalido";
+
+    case ERR_MAIL:
+        return "Email invalido";
+
+    case ERR_MAIL_TUTOR:
+        return "Email tutor invalido";
+
+    default:
+        return "";
+   }
+}
+
+int validarMiembro(t_Miembro* miembro) {
+        if(ValidarDni(miembro->DNI) == FALSE) return ERR_DNI;
+
+        if(Validar_Nacimiento(&miembro->FechaNacimiento, &miembro->FechaProceso) == FALSE) return ERR_NAC;
+
+        if(ValidarSexo(miembro->Sexo) == FALSE) return ERR_SEXO;
+
+        if(Validar_Afiliacion(&miembro->FechaAfiliacion, &miembro->FechaNacimiento, &miembro->FechaProceso) == FALSE) return ERR_AFIL;
+
+        if(Validar_Categoria(miembro->Categoria, &miembro->FechaNacimiento, &miembro->FechaProceso) == FALSE) return ERR_CAT;
+
+        if(Validar_UltimaCuota(&miembro->FechaUltimaCuotaPaga, &miembro->FechaAfiliacion, &miembro->FechaProceso) == FALSE) return ERR_ULT_CUOTA;
+
+        if(ValidarEstado(miembro->Estado) == FALSE) return ERR_ESTADO;
+
+        if(validar_Plan(miembro->Plan) == FALSE) return ERR_PLAN;
+
+        if(validar_Mail(miembro->EmailTutor) == FALSE) return ERR_MAIL;
+
+        if(Validar_MailTutor(miembro->EmailTutor, miembro->Categoria) == FALSE) return ERR_MAIL_TUTOR;
+
+    return TODO_OK;
+}
+
+int guardarRegistroError(const char* nombreArch, const void* reg, size_t tamElem, const char* mensaje) {
+    FILE* pTxtError = fopen(nombreArch, "a+");
+
+    if(!pTxtError) {
+        return ERR_ARCHIVO;
+    }
+
+    const t_Miembro* miembro = reg;
+
+    fprintf(pTxtError, "%ld|%s|%d-%d-%d|%c|%d-%d-%d|%s|%d-%d-%d|%c|%s|%s|%s\n", miembro->DNI, miembro->ApellidosNombres, miembro->FechaNacimiento.dia, miembro->FechaNacimiento.mes, miembro->FechaNacimiento.anio, miembro->Sexo, miembro->FechaAfiliacion.dia, miembro->FechaAfiliacion.mes, miembro->FechaAfiliacion.anio, miembro->Categoria, miembro->FechaUltimaCuotaPaga.dia, miembro->FechaUltimaCuotaPaga.mes, miembro->FechaUltimaCuotaPaga.anio, miembro->Estado, miembro->Plan, miembro->EmailTutor, mensaje);
+
+    fclose(pTxtError);
+
+    return TODO_OK;
+}
+
+/// Ingreso de fecha proceso
+void ingresoFechaProceso(t_Fecha* fProceso) {
+    do {
+        printf("Ingrese la fecha de proceso (aaaa): ");
+        scanf("%d",&fProceso->anio);
+
+        printf("Ingrese la fecha de proceso (mm): ");
+        scanf("%d",&fProceso->mes);
+
+        printf("Ingrese la fecha de proceso (dd): ");
+        scanf("%d",&fProceso->dia);
+
+    } while(validar_Fecha(fProceso) == FALSE);
+}
+
+/// Concatenar fecha proceso con nombre de archivos
+char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const char* extension) {
+    char fechaFormatoTexto[20];
+
+    // Calcular el tamaño total necesario
+    size_t tam = strlen(nombreArch) + strlen(fechaFormatoTexto) + strlen(extension) + 1;
+
+    // Reservar memoria dinámica
+    char* nombreArchivo = malloc(tam);
+    if (!nombreArchivo) {
+        return NULL;
+    }
+
+    strcpy(nombreArchivo, nombreArch);
+    sprintf(fechaFormatoTexto, "%04d%02d%02d", fProceso->anio, fProceso->mes, fProceso->dia);
+    strcat(nombreArchivo, fechaFormatoTexto);
+    strcat(nombreArchivo, extension);
+
+    return nombreArchivo;
+}
+
+int mostrarArchivoBinario(const char* nombreArchivoBin) {
+    FILE* pBin = fopen(nombreArchivoBin, "rb");
 
     if(!pBin) {
         return ERR_ARCHIVO;
     }
 
     t_Miembro miembro;
-
     fread(&miembro, sizeof(t_Miembro), 1, pBin);
-    int ret = 0;
+
+    printf("\n ******** MIEMBROS *********** \n");
     while(!feof(pBin)) {
-       ret = validarMiembro(miembro);
-
-       switch(ret) {
-        case ERR_DNI:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "DNI Error");
-
-        case ERR_NAC:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Nacimiento Error");
-
-        case ERR_SEXO:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Sexo Error");
-
-        case ERR_AFIL:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Afiliacion Error");
-
-        case ERR_CAT:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Categoria Error");
-
-        case ERR_ULT_CUOTA:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Ult Cuota Error");
-
-        case ERR_ESTADO:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Estado Error");
-
-        case ERR_PLAN:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Plan Error");
-
-        case ERR_MAIL:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Mail Error");
-
-        case ERR_MAIL_TUTOR:
-            guardarRegistroError(&miembro, size_t(t_Miembro), "Mail Tutor Error");
-       }
-
+        printf("%ld|%s|%d-%d-%d|%c|%d-%d-%d|%s|%d-%d-%d|%c|%s|%s\n", miembro.DNI, miembro.ApellidosNombres, miembro.FechaNacimiento.dia, miembro.FechaNacimiento.mes, miembro.FechaNacimiento.anio, miembro.Sexo, miembro.FechaAfiliacion.dia, miembro.FechaAfiliacion.mes, miembro.FechaAfiliacion.anio, miembro.Categoria, miembro.FechaUltimaCuotaPaga.dia, miembro.FechaUltimaCuotaPaga.mes, miembro.FechaUltimaCuotaPaga.anio, miembro.Estado, miembro.Plan, miembro.EmailTutor);
         fread(&miembro, sizeof(t_Miembro), 1, pBin);
     }
-}
 
-int validarMiembro(t_Miembro miembro) {
-        if(ValidarDni(miembro.DNI) == FALSE) return ERR_DNI;
+    fclose(pBin);
 
-        if(Validar_Nacimiento(&miembro.FechaNacimiento, &miembro.FechaProceso) == FALSE) return ERR_NAC;
-
-        if(ValidarSexo(miembro.Sexo) == FALSE) return ERR_SEXO;
-
-        if(Validar_Afiliacion(&miembro.FechaAfiliacion, &miembro.FechaNacimiento, &miembro.FechaProceso) == FALSE) return ERR_AFIL;
-
-        if(Validar_Categoria(&miembro.Categoria, &miembro.FechaNacimiento, &miembro.FechaProceso) == FALSE) return ERR_CAT;
-
-        if(Validar_UltimaCuota(&miembro.FechaUltimaCuotaPaga, &miembro.FechaAfiliacion, &miembro.FechaProceso) == FALSE) return ERR_ULT_CUOTA;
-
-        if(ValidarEstado(miembro.Estado) == FALSE) return ERR_ESTADO;
-
-        if(validar_Plan(miembro.Plan) == FALSE) return ERR_PLAN;
-
-        if(validar_Mail(&miembro.EmailTutor) == FALSE) return ERR_MAIL;
-
-        if(Validar_MailTutor(&miembro.EmailTutor, &miembro.Categoria) == FALSE) return ERR_MAIL_TUTOR;
+    return TODO_OK;
 }
