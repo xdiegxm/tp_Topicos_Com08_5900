@@ -20,6 +20,7 @@ typedef struct{
     int mes;
     int anio;
 }t_Fecha;
+
 typedef struct {
     long DNI;
     char ApellidosNombres[MAX_APENOM];
