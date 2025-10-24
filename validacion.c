@@ -53,9 +53,7 @@ int Validar_MailTutor(const char *mail, const char *categ){
     if(strcmp(categ,"MENOR")==0)
        return validar_Mail(mail);
 
-    if (mail == NULL || strlen(mail) == 0)
-        return TRUE;
-    return validar_Mail(mail);
+    return (mail==NULL || strlen(mail)==0)? TRUE:FALSE;
 }
 int Validar_Afiliacion(const t_Fecha *fechaAfil, const t_Fecha *fechaNac, const t_Fecha *fechaProc){
 

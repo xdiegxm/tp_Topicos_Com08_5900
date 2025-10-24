@@ -1,37 +1,60 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
+#include "validacion.h"
+
+
+
+#define TAM_LINEA 500
+#define TODO_OK 0
+#define ERR_ARCHIVO 1
+#define ERR_MEMORIA 2
+#define ERR_LINEA_LARGA 3
+
+#define ERR_DNI 1001
+#define ERR_NAC 1002
+#define ERR_SEXO 1003
+#define ERR_AFIL 1004
+#define ERR_CAT 1005
+#define ERR_ULT_CUOTA 1006
+#define ERR_ESTADO 1007
+#define ERR_PLAN 1008
+#define ERR_MAIL 1009
+#define ERR_MAIL_TUTOR 1010
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
+#include <dirent.h>
 #include <ctype.h>
-#include <time.h>
 
-#define MAX_APENOM 61  // 60 caracteres + '\0'
-#define MAX_CAT 11     // 10 caracteres + '\0'
-#define MAX_PLAN 11    // 10 caracteres + '\0'
-#define MAX_EMAIL 31   // 30 caracteres + '\0
 
-typedef time_t t_fecha;
+typedef int (*TxtABin)(const char* linea, void* reg, const t_Fecha* fechaP);
+typedef bool (*EsErrorFatal)(int cod);
+
+int txtABin(const char* linea, void* reg, const t_Fecha* fechaP);
+bool esErrorFatal(int cod);
+
+int validarMiembro(t_Miembro*);
+int guardarRegistroError(const char* nombreArch, const void* reg, size_t tamElem, const char* mensaje);
+char* obtenerMensajeError(int ret);
+void ingresoFechaProceso(t_Fecha* fProceso);
+char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const char* extension);
+int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, const char* nombreArchError, size_t tamReg, const t_Fecha* fechaP, TxtABin txtABin, EsErrorFatal esErrorFatal);
+
+int mostrarArchivoBinario(const char* nombreArchivoBin);
+int existeArchivo(const char* path);
+void ingresarOpcionMenu(int* cod);
 
 typedef struct {
+    void* vec;
+    size_t ce;
+    size_t cap;
+    size_t tamElem;
+} Vector;
 
-    long DNI;
-    char ApellidosNombres[MAX_APENOM];
-    t_fecha FechaProceso;
-    t_fecha FechaNacimiento;
-    char Sexo;
-    t_fecha FechaAfiliacion;
-    char Categoria[MAX_CAT];
-    char Estado;
-    char Plan[MAX_PLAN];
-    char EmailTutor[MAX_EMAIL];
-    t_fecha FechaUltimaCuotaPaga;
-
-} RegistroMiembro;
-
-bool validar_dni(const char *dni_str, long *dni_num_out);
-bool normalizar_apellido_nombre(const char *input_str, char *output_str, size_t max1);
+typedef struct {
+    long dni;
+    int indice;
+} Indice;
 
 #endif // FUNCIONES_H_INCLUDED

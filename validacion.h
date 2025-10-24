@@ -7,7 +7,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <time.h>
-#include <stddef.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -63,5 +62,4 @@ void normalizar_apellido_nombre(t_Miembro *miembro_ptr);
 int anioBisiesto(int anio);
 t_Fecha difFechas(const t_Fecha *fecIni, const t_Fecha *fecFin);
 int validar_Fecha(const t_Fecha *fecha);
-
 #endif // VALIDACION_H_INCLUDED
