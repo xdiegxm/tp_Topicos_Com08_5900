@@ -55,13 +55,14 @@ int txtABin(const char* linea, void* reg, const t_Fecha* fechaProceso) {
     // Email
     *act = '\0';
     act = strrchr(linea, '|');
-    strncpy(miembro->EmailTutor, act + 1, MAX_EMAIL);
-    miembro->EmailTutor[MAX_EMAIL] = '\0';
+    strncpy(miembro->EmailTutor, act + 1, MAX_EMAIL - 1);
+    miembro->EmailTutor[MAX_EMAIL-1] = '\0';
 
     // Plan
     *act = '\0';
     act = strrchr(linea, '|');
-    strncpy(miembro->Plan, act + 1, MAX_PLAN);
+    strncpy(miembro->Plan, act + 1, MAX_PLAN - 1);
+    miembro->Plan[MAX_PLAN - 1] = '\0';
     // miembro->Plan[MAX_PLAN] = '\0';
 
     // Estado
@@ -77,7 +78,8 @@ int txtABin(const char* linea, void* reg, const t_Fecha* fechaProceso) {
     // Categoria
     *act = '\0';
     act = strrchr(linea, '|');
-    strncpy(miembro->Categoria, act + 1, MAX_CAT);
+    strncpy(miembro->Categoria, act + 1, MAX_CAT - 1);
+    miembro->Categoria[MAX_CAT - 1] = '\0';
     // miembro->Categoria[MAX_CAT] = '\0';
 
     // Fecha Afiliacion
@@ -103,7 +105,8 @@ int txtABin(const char* linea, void* reg, const t_Fecha* fechaProceso) {
     // AyN
     *act = '\0';
     act = strrchr(linea, '|');
-    strncpy(miembro->ApellidosNombres, act + 1, MAX_APENOM);
+    strncpy(miembro->ApellidosNombres, act + 1, MAX_APENOM - 1);
+    miembro->ApellidosNombres[MAX_APENOM - 1] = '\0';
     normalizar_apellido_nombre(miembro);
 
     // DNI
