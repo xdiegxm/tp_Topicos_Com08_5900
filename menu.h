@@ -1,6 +1,7 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
-
+#include "validacion.h";
+#include "funciones.h";
 
 
 // FUNCIONES QUE USO PARA MODIFICAR/LEER EL ARCHIVO
@@ -13,5 +14,6 @@ int validar_miembro(const t_Miembro *miembro);
 int miembro_modificar(t_indice *indice, FILE *fp);
 int miembro_dar_baja(t_indice *indice, FILE *fp);
 int miembro_mostrar_info(const t_indice *indice, FILE *fp);
+
 void miembro_mostrar_datos(const t_Miembro *miembro);
 #endif // MENU_H_INCLUDED
