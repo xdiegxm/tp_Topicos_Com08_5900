@@ -192,11 +192,3 @@ int validar_Fecha(const t_Fecha *fecha){
 
     return TRUE;
 }
-/**********************************************************
-*                       COMPARACION                       *
-***********************************************************/
-int comparar_dni (const void* a, const void* b){
-    t_reg_indice* ra = (t_reg_indice*)a;
-    t_reg_indice* pb = (t_reg_indice*)b;
-    return ra.dni - pb.dni;
-}

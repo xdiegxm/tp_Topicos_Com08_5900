@@ -62,8 +62,5 @@ void normalizar_apellido_nombre(t_Miembro *miembro_ptr);
 int anioBisiesto(int anio);
 t_Fecha difFechas(const t_Fecha *fecIni, const t_Fecha *fecFin);
 int validar_Fecha(const t_Fecha *fecha);
-/**********************************************************
-*                       COMPARACION                       *
-***********************************************************/
-int comparar_dni (const void* a, const void* b);
+
 #endif // VALIDACION_H_INCLUDED

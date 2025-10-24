@@ -27,5 +27,11 @@ int indice_vacio (const t_indice *indice);
 int indice_lleno (const t_indice *indice);
 void indice_vaciar(t_indice* indice);
 int indice_cargar(const char* path, t_indice *indice, void *vreg_ind, size_t tamanyo, int(*cmp)(const void*)(const void*));
+/**********************************************************
+*                       COMPARACION                       *
+***********************************************************/
+int comparar_dni (const void* a, const void* b);
 
+void Bubble_Sort_Gen (void *v, size_t ce, size_t tam, int (*cmp)(const void*,const void*));
+void IntercambioDinamicoGenerico (void *a, void *b, size_t tam);
 #endif // INDICE_H_INCLUDED

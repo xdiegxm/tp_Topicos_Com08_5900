@@ -1,5 +1,4 @@
 #include "indice.h"
-#include "validacion.h"
 /**
 void indice_crear (t_indice*):
 toma memoria para 100 elementos e inicializa la estructura a índice vacío.
@@ -21,7 +20,7 @@ void indice_redimensionar (t_indice *indice, size_t nmemb, size_t tamanyo){
     size_t inc = (indice->cantidad_elementos_maxima*nmemb);
     temp = realloc(indice->vindice,tamanyo*inc);
     if(!temp){
-        printf("ERROR AL DIMENSIONAR EL INDICE...");
+        printf("ERROR AL REDIMENSIONAR EL INDICE...");
         return;
     }
     indice->cantidad_elementos_maxima=inc;
@@ -112,8 +111,76 @@ void indice_vaciar(t_indice* indice){
     indice->cantidad_elementos_actual=0;
     indice->cantidad_elementos_maxima=0;
 }
+/**
+int indice_cargar (t_indice*, const char* path):
+Carga el índice desde un archivo.
+**/
+int indice_cargar(const char* path, t_indice *indice, size_t tamanyo, int(*cmp)(const void*)(const void*)){
+    FILE* archbin = fopen(path,"rb");
+    if(!archbin){
+        printf("ERROR LA ABRIR EL ARCHIVO BINARIO...");
+        return ERROR;
+    }
+    t_Miembro miembro;
+    size_t i=0;
+    if(!fread(&miembro,sizeof(t_Miembro),1,archbin)){
+        printf("EL ARCHIVO NO CONTIENE DATOS...");
+        return ERROR;
+    }
+    while(!feof(archbin)){
+        if(indice_lleno(indice)){
+           indice_redimensionar(indice,INCREMENTO,tamanyo);
+        }
+        ((t_reg_indice*)indice->vindice)[i].nro_reg=i;
+        ((t_reg_indice*)indice->vindice)[i].dni=miembro.DNI;
+        i++;
+        indice->cantidad_elementos_actual++;
+        fread(&miembro,sizeof(t_Miembro),1,archbin);
+    }
+    Bubble_Sort_Gen(indice->vindice,indice->cantidad_elementos_actual,sizeof(t_reg_indice),cmp);
+    fclose(archbin);
+    return OK;
+}
+/**
+Ordenamiento burbuja
+**/
+void Bubble_Sort_Gen (void *v, size_t ce, size_t tam, int (*cmp)(const void*,const void*))
+{
+    int i, j;
+    for(i=0; i<ce-1; i++)
+    {
+        for(j=0; j<ce-1-i; j++)
+        {
+            if(cmp(v+(j*tam),v+((j+1)*tam))>0)
+                IntercambioDinamicoGenerico(v+(j*tam),v+((j+1)*tam),tam);
+        }
+    }
+}
+/**
+Intercambia dos datos
+**/
+void IntercambioDinamicoGenerico (void *a, void *b, size_t tam)
+{
+    char *aux = (char*)malloc(tam);
+    if(aux==NULL)
+    {
+        printf("Error.");
+        return;
+    }
+    memcpy(aux,a,tam);
+    memcpy(a,b,tam);
+    memcpy(b,aux,tam);
 
-
+    free(aux);
+}
+/**********************************************************
+*                       COMPARACION                       *
+***********************************************************/
+int comparar_dni (const void* a, const void* b){
+    t_reg_indice* ra = (t_reg_indice*)a;
+    t_reg_indice* pb = (t_reg_indice*)b;
+    return ra.dni - pb.dni;
+}
 
 
 
