@@ -1,8 +1,8 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
+#include "indice.h"
 #include "validacion.h";
 #include "funciones.h";
-
 
 // FUNCIONES QUE USO PARA MODIFICAR/LEER EL ARCHIVO
 FILE *abrir_archivo(const char *nombre_archivo, const char *modo);
@@ -14,6 +14,10 @@ int validar_miembro(const t_Miembro *miembro);
 int miembro_modificar(t_indice *indice, FILE *fp);
 int miembro_dar_baja(t_indice *indice, FILE *fp);
 int miembro_mostrar_info(const t_indice *indice, FILE *fp);
-
 void miembro_mostrar_datos(const t_Miembro *miembro);
+
+//FUNCIONES DE LISTADOS /e,f
+void mostrarMiembrosIndice(FILE *pf, const t_indice *indice);
+int ListadoOrdenadoDNI(const char *nombreArchivo, t_indice *indice);
+int ListadoAgrupadoPlan(const char *nombreArchivo, int (*cmp)(const void*, const void*));
 #endif // MENU_H_INCLUDED
