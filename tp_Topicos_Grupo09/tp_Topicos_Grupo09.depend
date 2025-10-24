@@ -3,7 +3,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1761157641 source:c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\main.c
+1761274340 source:c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\main.c
 	<stdio.h>
 	<stdlib.h>
 	"validacion.h"
@@ -12,7 +12,7 @@
 1761137129 source:c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\validacion.c
 	"validacion.h"
 
-1761154614 c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\validacion.h
+1761157815 c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\validacion.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -20,10 +20,15 @@
 	<ctype.h>
 	<time.h>
 
-1761157702 source:c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\funciones.c
+1761274470 source:c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\funciones.c
 	"validacion.h"
 	"funciones.h"
 
-1761157595 c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\funciones.h
+1761273943 c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\funciones.h
 	"validacion.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<dirent.h>
+	<ctype.h>
 

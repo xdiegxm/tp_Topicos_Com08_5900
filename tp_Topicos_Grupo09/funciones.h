@@ -21,6 +21,13 @@
 #define ERR_MAIL 1009
 #define ERR_MAIL_TUTOR 1010
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+#include <ctype.h>
+
+
 typedef int (*TxtABin)(const char* linea, void* reg, const t_Fecha* fechaP);
 typedef bool (*EsErrorFatal)(int cod);
 
@@ -35,6 +42,8 @@ char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const
 int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, const char* nombreArchError, size_t tamReg, const t_Fecha* fechaP, TxtABin txtABin, EsErrorFatal esErrorFatal);
 
 int mostrarArchivoBinario(const char* nombreArchivoBin);
+int existeArchivo(const char* path);
+void ingresarOpcionMenu(int* cod);
 
 typedef struct {
     void* vec;

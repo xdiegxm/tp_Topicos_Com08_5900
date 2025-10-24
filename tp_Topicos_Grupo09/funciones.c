@@ -260,3 +260,18 @@ int mostrarArchivoBinario(const char* nombreArchivoBin) {
 
     return TODO_OK;
 }
+/// --------------------------------------------
+/// Checkea la existencia del archivo
+int existeArchivo(const char* path){
+    FILE* f = fopen(path, "rb");
+    if(!f) return 0;
+    fclose(f);
+    return 1;
+}
+
+void ingresarOpcionMenu(int* cod) {
+    do {
+       printf("Ingrese la opcion que desea: ");
+       scanf("%d", cod);
+    } while(*cod != 1 && *cod != 2);
+}
