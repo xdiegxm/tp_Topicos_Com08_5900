@@ -1,7 +1,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 #include "validacion.h"
-
+#include "indice.h"
 
 
 #define TAM_LINEA 500
@@ -42,4 +42,9 @@ int mostrarArchivoBinario(const char* nombreArchivoBin);
 ***********************************************************/
 char menu(const char m[][TAM_MENU], const char *txt);
 char elegir_opcion(const char m[][TAM_MENU], const char *txt, const char *msj);
+void generar_Alta (long dniABM, t_indice* indice, const char* path, t_Fecha* fecha_proceso, int(*cmp)(const void*, const void*));
+void ingresarFecha(t_Fecha *fProceso);
+int es_menor_de_edad(const t_Fecha* nacimiento, const t_Fecha* fecha_actual);
+int validar_miembro_alta(t_Miembro* miembro,const t_Fecha* fecha_proceso);
+int pedir_datos_miembro (t_Miembro* miembro, t_Fecha* fechaproceso);
 #endif // FUNCIONES_H_INCLUDED

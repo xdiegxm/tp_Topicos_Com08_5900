@@ -14,7 +14,7 @@ int main()
     }
 
     ingresoFechaProceso(fechaProceso);
-
+    long dniABM;
     char* nombreArchivoError = concatenarFechaConArchivo("error-VC-", fechaProceso, ".txt");
     char* nombreArchivoBin = concatenarFechaConArchivo("miembros-VC-", fechaProceso, ".dat");
 
@@ -31,6 +31,7 @@ int main()
         system("PAUSE");
 
     t_reg_indice* regAMB=(t_reg_indice*)indice->vindice;
+    t_reg_indice buffer;
     for(int i=0; i<indice->cantidad_elementos_actual; i++)
     {
         printf("DNI: %-8ld\tPOS:%-5i\n", regAMB[i].dni, regAMB[i].nro_reg);
@@ -51,7 +52,20 @@ int main()
         opc=menu(opciones, "Menu Principal");
         switch(opc){
         case 'A':
-            ///codigo
+            printf("\nIngresar DNI para el Alta: ");
+            scanf("%ld", &dniABM);
+            if(ValidarDni(dniABM)){
+                buffer.dni=dniABM;
+                if(indice_buscar(indice,&buffer,sizeof(t_reg_indice),comparar_dni)!=NO_EXISTE){
+                    printf("\nEl DNI ya existe en el archivo.");
+                }
+                else{
+                    generar_Alta(dniABM,indice,nombreArchivoBin,fechaProceso,comparar_dni);
+                }
+            }
+            else{
+                printf("El DNI ingresado no es valido.");
+            }
             system("PAUSE");
             break;
         case 'B':

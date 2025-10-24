@@ -31,7 +31,7 @@
 	"validacion.h"
 	"funciones.h"
 
-1761281637 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\validacion.h
+1761329704 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\validacion.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -40,10 +40,11 @@
 	<time.h>
 	<stddef.h>
 
-1761282054 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\funciones.h
+1761329739 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\funciones.h
 	"validacion.h"
+	"indice.h"
 
-1761282006 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\indice.c
+1761328876 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\indice.c
 	"indice.h"
 	"validacion.h"
 
@@ -52,13 +53,13 @@
 	<stdio.h>
 	<stdlib.h>
 
-1761282962 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\main.c
+1761323103 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\main.c
 	<stdio.h>
 	<stdlib.h>
 	"validacion.h"
 	"funciones.h"
 	"indice.h"
 
-1761277175 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\validacion.c
+1761329751 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\validacion.c
 	"validacion.h"
 

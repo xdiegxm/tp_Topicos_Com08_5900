@@ -290,3 +290,150 @@ char elegir_opcion(const char m[][TAM_MENU], const char *txt, const char *msj)
 
     return toupper(opcion);
 }
+/**********************************************************
+*                FUNCIONES ABM
+***********************************************************/
+void generar_Alta (long dniABM, t_indice* indice, const char* path, t_Fecha* fecha_proceso, int(*cmp)(const void*, const void*)){
+    FILE* ab = fopen(path,"r+b");
+    if(!ab){
+        printf("\nERROR AL ABRIR EL ARCHIVO PARA GENERAR EL ALTA.");
+        return;
+    }
+    t_Miembro miembro;
+    miembro.DNI=dniABM;
+    if(pedir_datos_miembro(&miembro,fecha_proceso)!=TRUE){
+        printf("\nError al ingresar los datos.");
+        fclose(ab);
+        return;
+    }
+    /// Validación completa del miembro
+    if (validar_miembro_alta(&miembro, fecha_proceso)==FALSE){
+        printf("\nDatos invalidos. Alta cancelada.");
+        fclose(ab);
+        return;
+    }
+
+    /// Guardar en archivo al final
+    fseek(ab,0L,SEEK_END);
+    long nro_reg=ftell(ab)/sizeof(t_Miembro);
+    fwrite(&miembro,sizeof(t_Miembro),1,ab);
+
+    t_reg_indice nuevo_reg = {miembro.DNI,nro_reg};
+    if(indice_insertar(indice,&nuevo_reg,sizeof(t_reg_indice),cmp)!=OK){
+        printf("\nError al insertar en el indice.");
+        fclose(ab);
+        return;
+    }
+    fclose(ab);
+    printf("\nUsuario %ld dado de alta con exito.", dniABM);
+}
+int pedir_datos_miembro (t_Miembro* miembro, t_Fecha* fechaproceso){
+    int c;
+    printf("Ingrese Apellido y Nombre:  ");
+    while ((c = getchar()) != '\n' && c != EOF);
+    fgets(miembro->ApellidosNombres, sizeof(miembro->ApellidosNombres), stdin);
+    miembro->ApellidosNombres[strlen(miembro->ApellidosNombres)-1]='\0';
+    normalizar_apellido_nombre(miembro);
+    printf("Ingrese Fecha de Nacimiento (DD/MM/AAAA):  ");
+    ingresarFecha(&miembro->FechaNacimiento);
+    fflush(stdin);
+    printf("Ingrese Sexo (M/F):  ");
+    scanf(" %c", &miembro->Sexo);
+    miembro->Sexo = toupper(miembro->Sexo);
+    printf("Ingrese Fecha de Afiliacion (DD/MM/AAAA): ");
+    ingresarFecha(&miembro->FechaAfiliacion);
+    printf("Ingrese Categoria: ");
+    while ((c = getchar()) != '\n' && c != EOF);
+    scanf(" %10s", miembro->Categoria);
+    printf("Ingrese Fecha de ultima cuota (DD/MM/AAAA): ");
+    ingresarFecha(&miembro->FechaUltimaCuotaPaga);
+    miembro->Estado='A';
+    printf("Ingrese el Plan (BASIC/PREMIUM/VIP/FAMILY):  ");
+    fgets(miembro->Plan, sizeof(miembro->Plan),stdin);
+    miembro->Plan[strlen(miembro->Plan)-1]='\0';
+    if(es_menor_de_edad(&miembro->FechaNacimiento, fechaproceso)){
+        printf("\nEl miembro es menor de edad. Debe ingresar datos del tutor");
+        printf("Ingrese Email del Tutor:  ");
+        fgets(miembro->EmailTutor, sizeof(miembro->EmailTutor), stdin);
+        miembro->EmailTutor[strlen(miembro->EmailTutor)-1]='\0';
+    }
+    else{
+        strcpy(miembro->EmailTutor,"");
+    }
+    return TRUE;
+}
+void ingresarFecha(t_Fecha *fProceso){
+    do{
+        fflush(stdin);
+        int cantidad = scanf("%d/%d/%d", &fProceso->dia, &fProceso->mes, &fProceso->anio);
+        if(cantidad != 3){
+            printf("Formato invalido. Ingrese nuevamente. \n");
+            fflush(stdin);
+            while(getchar() != '\n');
+            continue;
+        }
+    }while(!validar_Fecha(fProceso));
+}
+int es_menor_de_edad(const t_Fecha* nacimiento, const t_Fecha* fecha_actual) {
+    t_Fecha edad=difFechas(nacimiento, fecha_actual);
+    return edad.anio<18;
+}
+int validar_miembro_alta(t_Miembro* miembro,const t_Fecha* fecha_proceso){
+    if (ValidarDni(miembro->DNI)==FALSE){
+        printf("\nERROR: DNI invalido.");
+        return FALSE;
+    }
+    if (validarStringAndTwo(miembro->ApellidosNombres,60)==0) {
+        printf("\nERROR: Apellido y nombre invalidos.");
+        return FALSE;
+    }
+    t_Fecha aux;
+    aux = difFechas(&miembro->FechaNacimiento, fecha_proceso);
+    if (validar_Fecha(&miembro->FechaNacimiento)==FALSE||aux.anio<10) {
+        printf("\nERROR: Fecha de nacimiento invalida.");
+        return FALSE;
+    }
+    if (ValidarSexo(miembro->Sexo)==FALSE) {
+        printf("\nERROR: Sexo invalido. Debe ser M o F.");
+        return FALSE;
+    }
+
+    if (validar_Fecha(&miembro->FechaAfiliacion)==FALSE){
+        printf("\nERROR: Fecha de afiliacion invalida.");
+        return FALSE;
+    }
+    if(!(cmpFecha(miembro->FechaAfiliacion,*fecha_proceso)<=0&&cmpFecha(miembro->FechaAfiliacion, miembro->FechaNacimiento)>0)){
+    printf("\nError: La fecha de afiliacion debe ser posterior a la fecha de nacimiento y no mayor a la fecha de proceso.");
+    return FALSE;
+    }
+
+    if (Validar_Categoria(miembro->Categoria,&miembro->FechaNacimiento,fecha_proceso)==FALSE) {
+        printf("\nERROR: Categoria invalida.");
+        return FALSE;
+    }
+    if(validar_Fecha(&miembro->FechaUltimaCuotaPaga)==FALSE){
+        printf("\nError: Fecha de ultima cuota invalida.");
+        return FALSE;
+    }
+    if(cmpFecha(miembro->FechaUltimaCuotaPaga, miembro->FechaAfiliacion)<=0||cmpFecha(miembro->FechaUltimaCuotaPaga, *fecha_proceso)>0){
+        printf("\nError: La fecha de ultima cuota debe ser posterior a la de afiliacion y no mayor a la fecha de proceso.");
+        return FALSE;
+    }
+    if (validar_Plan(miembro->Plan)==FALSE) {
+        printf("\nERROR: Plan invalido.");
+        return FALSE;
+    }
+    if (es_menor_de_edad(&miembro->FechaNacimiento, fecha_proceso)){
+        if (Validar_MailTutor(miembro->EmailTutor,miembro->Categoria)==FALSE){
+            printf("\nERROR: Email del tutor invalido.");
+            return FALSE;
+        }
+    }
+    return ValidarEstado(miembro->Estado);;
+}
+
+
+
+
+
+
