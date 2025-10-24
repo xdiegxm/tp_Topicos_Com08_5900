@@ -223,6 +223,8 @@ void ingresoFechaProceso(t_Fecha* fProceso) {
 char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const char* extension) {
     char fechaFormatoTexto[20];
 
+    sprintf(fechaFormatoTexto, "%04d%02d%02d", fProceso->anio, fProceso->mes, fProceso->dia);
+
     // Calcular el tamaño total necesario
     size_t tam = strlen(nombreArch) + strlen(fechaFormatoTexto) + strlen(extension) + 1;
 
@@ -233,30 +235,8 @@ char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const
     }
 
     strcpy(nombreArchivo, nombreArch);
-    sprintf(fechaFormatoTexto, "%04d%02d%02d", fProceso->anio, fProceso->mes, fProceso->dia);
     strcat(nombreArchivo, fechaFormatoTexto);
     strcat(nombreArchivo, extension);
 
     return nombreArchivo;
-}
-
-int mostrarArchivoBinario(const char* nombreArchivoBin) {
-    FILE* pBin = fopen(nombreArchivoBin, "rb");
-
-    if(!pBin) {
-        return ERR_ARCHIVO;
-    }
-
-    t_Miembro miembro;
-    fread(&miembro, sizeof(t_Miembro), 1, pBin);
-
-    printf("\n ******** MIEMBROS *********** \n");
-    while(!feof(pBin)) {
-        printf("%ld|%s|%d-%d-%d|%c|%d-%d-%d|%s|%d-%d-%d|%c|%s|%s\n", miembro.DNI, miembro.ApellidosNombres, miembro.FechaNacimiento.dia, miembro.FechaNacimiento.mes, miembro.FechaNacimiento.anio, miembro.Sexo, miembro.FechaAfiliacion.dia, miembro.FechaAfiliacion.mes, miembro.FechaAfiliacion.anio, miembro.Categoria, miembro.FechaUltimaCuotaPaga.dia, miembro.FechaUltimaCuotaPaga.mes, miembro.FechaUltimaCuotaPaga.anio, miembro.Estado, miembro.Plan, miembro.EmailTutor);
-        fread(&miembro, sizeof(t_Miembro), 1, pBin);
-    }
-
-    fclose(pBin);
-
-    return TODO_OK;
 }

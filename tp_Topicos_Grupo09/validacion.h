@@ -7,6 +7,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <time.h>
+#include <stddef.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -38,6 +39,7 @@ typedef struct {
 *                         MACROS                          *
 ***********************************************************/
 #define toUpper(X) (((X) >= 'a' && (X) <= 'z') ? (X) - 32 : (X))
+#define ES_LETRA(X) ((((X) >= 'a' && (X) <= 'z') || ((X)>= 'A' && (X) <= 'Z')))
 /**********************************************************
 *                VALIDACION   DATOS                       *
 ***********************************************************/
@@ -54,6 +56,7 @@ int Validar_Nacimiento(const t_Fecha *fechaNacimiento, const t_Fecha *fechaProc)
 /**********************************************************
 **                FUNCIONES STRING                        *
 ***********************************************************/
+int validarStringAndTwo(char *str, int tam);
 void str_toupper(char* str);
 void normalizar_apellido_nombre(t_Miembro *miembro_ptr);
 /**********************************************************
@@ -62,4 +65,5 @@ void normalizar_apellido_nombre(t_Miembro *miembro_ptr);
 int anioBisiesto(int anio);
 t_Fecha difFechas(const t_Fecha *fecIni, const t_Fecha *fecFin);
 int validar_Fecha(const t_Fecha *fecha);
+int cmpFecha(const t_Fecha f1, const t_Fecha f2);
 #endif // VALIDACION_H_INCLUDED

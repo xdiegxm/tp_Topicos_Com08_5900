@@ -1,7 +1,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 #include "validacion.h"
-
+#include "indice.h"
 
 
 #define TAM_LINEA 500
@@ -9,6 +9,8 @@
 #define ERR_ARCHIVO 1
 #define ERR_MEMORIA 2
 #define ERR_LINEA_LARGA 3
+#define TAM_MENU 50
+
 
 #define ERR_DNI 1001
 #define ERR_NAC 1002
@@ -27,25 +29,14 @@ typedef bool (*EsErrorFatal)(int cod);
 int txtABin(const char* linea, void* reg, const t_Fecha* fechaP);
 bool esErrorFatal(int cod);
 
+int mostrarArchivoBinario(const char* nombreArchivoBin);
+int existeArchivo(const char* path);
+void ingresarOpcionMenu(int* cod);
+
 int validarMiembro(t_Miembro*);
 int guardarRegistroError(const char* nombreArch, const void* reg, size_t tamElem, const char* mensaje);
 char* obtenerMensajeError(int ret);
 void ingresoFechaProceso(t_Fecha* fProceso);
 char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const char* extension);
 int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, const char* nombreArchError, size_t tamReg, const t_Fecha* fechaP, TxtABin txtABin, EsErrorFatal esErrorFatal);
-
-int mostrarArchivoBinario(const char* nombreArchivoBin);
-
-typedef struct {
-    void* vec;
-    size_t ce;
-    size_t cap;
-    size_t tamElem;
-} Vector;
-
-typedef struct {
-    long dni;
-    int indice;
-} Indice;
-
 #endif // FUNCIONES_H_INCLUDED

@@ -1,0 +1,3 @@
+12345678|Perez, Juan|1990-5-12|M|2010-6-1|ADULTO|2025-1-1|A|BASIC|juan.perez@gmail.com|Fecha nacimiento invalido
+98765432|Gomez, Maria|1985-11-20|F|2005-4-15|ADULTO|2025-1-10|B|VIP|maria.gomez@yahoo.com|Fecha nacimiento invalido
+45678901|Lopez, Ana|2010-7-3|F|2020-9-15|MENOR|2025-1-5|A|FAMILY|ana.lopez@hotmail.com|Fecha nacimiento invalido

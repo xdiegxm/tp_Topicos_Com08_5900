@@ -1,0 +1,13 @@
+12345678|Perez, Juan|1990-5-12|M|2010-6-1|ADULTO|2025-1-1|A|BASIC|juan.perez@gmail.com|Fecha nacimiento invalido
+98765432|Gomez, Maria|1985-11-20|F|2005-4-15|ADULTO|2025-1-10|B|VIP|maria.gomez@yahoo.com|Fecha nacimiento invalido
+45678901|Lopez, Ana|2010-7-3|F|2020-9-15|MENOR|2025-1-5|A|FAMILY|ana.lopez@hotmail.com|Fecha nacimiento invalido
+1234|Martinez, Luis|1980-1-1|M|2000-5-5|ADULTO|2025-1-2|A|PREMIUM|luis.martinez@gmail.com|Dni invalido
+87654321|Rodriguez, Jose|1992-3-8|X|2012-2-2|ADULTO|2025-1-3|A|VIP|jose.rodriguez@gmail.com|Fecha nacimiento invalido
+65432109|Sanchez, Pedro|1975-10-10|M|1995-3-3|ADULTO|2025-1-4|C|BASIC|pedro.sanchez@gmail.com|Fecha nacimiento invalido
+54321098|Diaz, Lucia|1995-9-9|F|2010-7-7|ADULTO|2025-1-6|A|GOLD|lucia.diaz@gmail.com|Fecha nacimiento invalido
+43210987|Fernandez, Clara|1990-12-12|F|2015-5-5|MENOR|2025-1-7|A|VIP|clara.fernandez@gmail.com|Fecha nacimiento invalido
+32109876|Mendez, Sofia|2012-6-6|F|2020-8-8|MENOR|2025-1-8|A|BASIC||Fecha nacimiento invalido
+21098765|Torres, Pablo|1988-8-8|M|2012-12-12|ADULTO|2025-1-9|A|PREMIUM|pablo@@gmail..com|Fecha nacimiento invalido
+10987654|Romero, Carla|2015-1-1|F|2020-1-1|ADULTO|2025-1-10|A|FAMILY|carla.romero@gmail.com|Fecha nacimiento invalido
+99887766|Alvarez, Juan|1999-2-2|M|1980-2-2|ADULTO|2025-1-11|A|VIP|juan.alvarez@gmail.com|Fecha nacimiento invalido
+88776655|Garcia, Mario|1970-7-7|M|1990-7-7|ADULTO|1985-1-1|A|PREMIUM|mario.garcia@gmail.com|Fecha nacimiento invalido

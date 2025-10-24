@@ -1,50 +1,13 @@
-82574075|torRES jorGE|1992-11-12|M|2020-09-08|ADULTO|2021-02-18|B|VIP|usuarioejemplo@galleta.com
-55613660|torRES lUiS albeRTO|2008-12-09|F|2030-07-26|MENOR|2030-12-16|A|FAMILY|tutorresponsable@yahoo.com
-64913672|loPEZ lUiS albeRTO|2007-04-10|M|2025-01-27|ADULTO|2026-02-14|B|BASIC|usuarioejemplo@gmail.com
-11830359|mOya pePE raul|1972-11-19|F|1991-12-30|ADULTO|1994-04-06|B|VIP|usuarioejemplo@gmail.com
-72558337|loPEZ laUra sofiA|1983-01-20|M|1994-10-04|ADULTO|1995-01-13|B|VIP|usuarioejemplo@outlook.com
-81726841|marTIn carLOs eduARDo|2007-07-13|M|2027-10-23|ADULTO|2028-08-10|B|FAMILY|usuarioejemplo@galleta.com
-78623790|marTIn marCEla|1982-02-14|M|2010-12-30|ADULTO|2012-05-21|B|VIP|usuarioejemplo@gmail.com
-89419082|gonzALez agUStin|1984-10-29|M|1995-08-17|ADULTO|1995-11-10|A|BASIC|usuarioejemplo@gmail.com
-83899271|pereZ jorGE|1985-03-26|M|2007-08-20|ADULTO|2010-03-11|A|PREMIUM|usuarioejemplo@outlook.com
-85240052|rodrIGUEZ jorGE|2001-08-07|F|2014-10-22|ADULTO|2016-03-14|A|BASIC|emailinvalido
-38243572|FERNANdez lUiS albeRTO|2008-12-23|M|2025-04-17|MENOR|2025-12-09|B|BASIC|tutorresponsable@galleta.com
-84274312|torRES ana mARia|2006-02-16|F|2021-07-01|ADULTO|2022-11-29|B|BASIC|usuarioejemplo@outlook.com
-21628582|torRES ana mARia|1980-05-13|F|2004-10-28|ADULTO|2007-01-02|A|VIP|usuarioejemplo@outlook.com
-73069725|FERNANdez lUiS albeRTO|1966-12-03|M|1978-10-12|ADULTO|1979-01-11|B|VIP|usuarioejemplo@yahoo.com
-61768207|mOya pePE raul|2001-09-11|M|2018-01-18|ADULTO|2019-03-21|B|PREMIUM|usuarioejemplo@galleta.com
-87062831|FERNANdez agUStin|1972-09-01|F|1988-04-02|ADULTO|1990-08-19|B|PREMIUM|usuarioejemplo@galleta.com
-19843120|sANchez jorGE|2001-05-07|F|2025-02-13|ADULTO|2027-05-12|A|VIP|usuarioejemplo@gmail.com
-30524997|rodrIGUEZ carLOs eduARDo|2001-07-23|F|2022-06-19|ADULTO|2024-04-21|B|FAMILY|usuarioejemplo@gmail.com
-18383167|loPEZ marCEla|2008-06-15|F|2020-06-16|MENOR|2020-12-09|B|VIP|tutorresponsable@outlook.com
-30010831|loPEZ claRa|2003-04-04|F|2029-08-15|ADULTO|2030-03-12|B|FAMILY|usuarioejemplo@galleta.com
-22863663|rodrIGUEZ laUra sofiA|1995-01-28|M|2012-08-16|ADULTO|2013-02-03|B|FAMILY|usuarioejemplo@galleta.com
-40389837|pereZ lUiS albeRTO|1992-01-04|M|2012-04-23|ADULTO|2013-05-14|B|BASIC|usuarioejemplo@outlook.com
-70233142|mOya ana mARia|1980-09-13|F|2005-02-18|ADULTO|2005-03-27|B|FAMILY|usuarioejemplo@outlook.com
-94585668|marTIn carLOs eduARDo|1999-10-18|F|2023-07-28|ADULTO|2025-11-13|A|VIP|usuarioejemplo@outlook.com
-12268000|torRES agUStin|1996-05-13|M|2025-02-18|ADULTO|2027-01-05|A|FAMILY|usuarioejemplo@yahoo.com
-69557014|mOya pePE raul|2002-02-01|F|2027-05-21|ADULTO|2027-07-17|A|BASIC|usuarioejemplo@galleta.com
-25069132|loPEZ agUStin|1990-11-06|M|2016-07-29|ADULTO|2018-01-09|A|PREMIUM|usuarioejemplo@yahoo.com
-32180854|gonzALez laUra sofiA|1996-05-15|F|2013-11-11|ADULTO|2014-04-08|A|PREMIUM|usuarioejemplo@yahoo.com
-61446760|torRES rosA|1984-11-26|F|2005-08-15|ADULTO|2007-11-27|A|VIP|usuarioejemplo@yahoo.com
-90439887|pereZ claRa|2007-11-30|M|2033-05-11|ADULTO|2034-01-31|A|VIP|usuarioejemplo@galleta.com
-77338959|mOya ana mARia|2008-10-26|F|2023-03-18|MENOR|2024-05-07|A|PREMIUM|tutorresponsable@galleta.com
-74507511|marTIn pePE raul|2001-03-16|F|2021-05-17|ADULTO|2024-01-18|B|BASIC|usuarioejemplo@gmail.com
-53835947|rodrIGUEZ marCEla|1984-03-16|M|1996-09-23|ADULTO|1999-05-07|B|VIP|usuarioejemplo@yahoo.com
-97808231|loPEZ marCEla|2014-09-27|F|2041-12-03|MENOR|2042-12-01|A|VIP|tutorresponsable@gmail.com
-52049019|rodrIGUEZ agUStin|2013-04-11|M|2031-08-18|MENOR|2032-05-04|A|VIP|tutorresponsable@galleta.com
-87080264|galletA marCEla|1998-01-29|M|2021-01-21|ADULTO|2022-09-12|B|VIP|usuarioejemplo@yahoo.com
-12276445|mOya jorGE|1973-03-10|M|1994-02-14|ADULTO|1994-04-21|A|FAMILY|usuarioejemplo@outlook.com
-55680171|mOya pePE raul|1968-10-26|F|1995-06-04|ADULTO|1997-09-21|B|BASIC|usuarioejemplo@gmail.com
-60139492|mOya ana mARia|2008-04-27|F|2032-06-02|MENOR|2034-10-02|A|PREMIUM|tutorresponsable@gmail.com
-28167814|torRES pePE raul|1991-02-28|X|2015-02-27|ADULTO|2016-01-07|A|FAMILY|usuarioejemplo@yahoo.com
-5592|marTIn agUStin|1967-06-25|F|1995-07-25|ADULTO|1998-01-21|A|PREMIUM|usuarioejemplo@galleta.com
-98783990|torRES laUra sofiA|1990-05-07|F|2012-09-26|ADULTO|2014-01-22|B|FAMILY|usuarioejemplo@gmail.com
-79256595|mOya jorGE|1966-10-14|F|1978-04-17|ADULTO|1980-07-11|A|BASIC|usuarioejemplo@outlook.com
-2768|mOya claRa|1982-04-26|F|1994-01-18|ADULTO|1994-03-31|B|PREMIUM|usuarioejemplo@galleta.com
-82830291|mOya marCEla|2026-13-40|M|2037-11-04|MENOR|2039-06-03|A|BASIC|tutorresponsable@yahoo.com
-27532466|torRES pePE raul|1986-12-15|F|2016-07-19|ADULTO|2017-09-23|B|BASIC|usuarioejemplo@yahoo.com
-34524928|pereZ agUStin|1990-09-03|F|2009-04-24|ADULTO|2009-08-22|B|FAMILY|usuarioejemplo@galleta.com
-42062704|pereZ carLOs eduARDo|1991-04-26|F|2007-01-17|ADULTO|2007-10-28|B|VIP|usuarioejemplo@gmail.com
-60306926|marTIn laUra sofiA|1981-09-05|F|1995-02-06|ADULTO|1996-12-22|A|BASIC|usuarioejemplo@gmail.com
-66939438|loPEZ lUiS albeRTO|1971-07-01|F|2000-06-23|ADULTO|2002-05-16|A|FAMILY|usuarioejemplo@galleta.com
+12345678|Perez, Juan|12-05-1990|M|01-06-2010|ADULTO|01-01-2025|A|BASIC|juan.perez@gmail.com
+98765432|Gomez, Maria|20-11-1985|F|15-04-2005|ADULTO|10-01-2025|B|VIP|maria.gomez@yahoo.com
+45678901|Lopez, Ana|03-07-2010|F|15-09-2020|MENOR|05-01-2025|A|FAMILY|ana.lopez@hotmail.com
+1234|Martinez, Luis|01-01-1980|M|05-05-2000|ADULTO|02-01-2025|A|PREMIUM|luis.martinez@gmail.com
+87654321|Rodriguez, Jose|08-03-1992|X|02-02-2012|ADULTO|03-01-2025|A|VIP|jose.rodriguez@gmail.com
+65432109|Sanchez, Pedro|10-10-1975|M|03-03-1995|ADULTO|04-01-2025|C|BASIC|pedro.sanchez@gmail.com
+54321098|Diaz, Lucia|09-09-1995|F|07-07-2010|ADULTO|06-01-2025|A|GOLD|lucia.diaz@gmail.com
+43210987|Fernandez, Clara|12-12-1990|F|05-05-2015|MENOR|07-01-2025|A|VIP|clara.fernandez@gmail.com
+32109876|Mendez, Sofia|06-06-2012|F|08-08-2020|MENOR|08-01-2025|A|BASIC|
+21098765|Torres, Pablo|08-08-1988|M|12-12-2012|ADULTO|09-01-2025|A|PREMIUM|pablo@@gmail..com
+10987654|Romero, Carla|01-01-2015|F|01-01-2020|ADULTO|10-01-2025|A|FAMILY|carla.romero@gmail.com
+99887766|Alvarez, Juan|02-02-1999|M|02-02-1980|ADULTO|11-01-2025|A|VIP|juan.alvarez@gmail.com
+88776655|Garcia, Mario|07-07-1970|M|07-07-1990|ADULTO|01-01-1985|A|PREMIUM|mario.garcia@gmail.com
