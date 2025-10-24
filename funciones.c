@@ -248,15 +248,45 @@ int mostrarArchivoBinario(const char* nombreArchivoBin) {
     }
 
     t_Miembro miembro;
-    fread(&miembro, sizeof(t_Miembro), 1, pBin);
 
     printf("\n ******** MIEMBROS *********** \n");
-    while(!feof(pBin)) {
+    while(fread(&miembro, sizeof(t_Miembro), 1, pBin)) {
         printf("%ld|%s|%d-%d-%d|%c|%d-%d-%d|%s|%d-%d-%d|%c|%s|%s\n", miembro.DNI, miembro.ApellidosNombres, miembro.FechaNacimiento.dia, miembro.FechaNacimiento.mes, miembro.FechaNacimiento.anio, miembro.Sexo, miembro.FechaAfiliacion.dia, miembro.FechaAfiliacion.mes, miembro.FechaAfiliacion.anio, miembro.Categoria, miembro.FechaUltimaCuotaPaga.dia, miembro.FechaUltimaCuotaPaga.mes, miembro.FechaUltimaCuotaPaga.anio, miembro.Estado, miembro.Plan, miembro.EmailTutor);
-        fread(&miembro, sizeof(t_Miembro), 1, pBin);
     }
 
     fclose(pBin);
 
     return TODO_OK;
+}
+/**********************************************************
+*                FUNCIONES MENU                           *
+***********************************************************/
+
+char menu(const char m[][TAM_MENU], const char *txt)
+{
+    printf("\n");
+    char opcion;
+    opcion = elegir_opcion(m, txt, "Elegir opcion: ");
+
+    while(!strchr(m[0], opcion))
+        opcion = elegir_opcion(m, txt, "Opcion erronea. Elegir nuevamente: ");
+
+    return opcion;
+}
+
+char elegir_opcion(const char m[][TAM_MENU], const char *txt, const char *msj)
+{
+    char opcion;
+    int i;
+
+    system("CLS");
+    printf("\n %s \n", txt);
+    for ( i=1 ; i <= strlen(m[0]) ; i++)
+        printf("\n %c - %s", m[0][i-1], m[i]);
+
+    printf("\n\n%s", msj);
+    fflush(stdin);
+    scanf(" %c", &opcion);
+
+    return toupper(opcion);
 }

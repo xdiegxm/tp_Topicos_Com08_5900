@@ -9,6 +9,8 @@
 #define ERR_ARCHIVO 1
 #define ERR_MEMORIA 2
 #define ERR_LINEA_LARGA 3
+#define TAM_MENU 50
+
 
 #define ERR_DNI 1001
 #define ERR_NAC 1002
@@ -35,5 +37,9 @@ char* concatenarFechaConArchivo(char* nombreArch, const t_Fecha* fProceso, const
 int convertirTxtABin(const char* nombreArchTxt, const char* nombreArchBin, const char* nombreArchError, size_t tamReg, const t_Fecha* fechaP, TxtABin txtABin, EsErrorFatal esErrorFatal);
 
 int mostrarArchivoBinario(const char* nombreArchivoBin);
-
+/**********************************************************
+*                FUNCIONES MENU                           *
+***********************************************************/
+char menu(const char m[][TAM_MENU], const char *txt);
+char elegir_opcion(const char m[][TAM_MENU], const char *txt, const char *msj);
 #endif // FUNCIONES_H_INCLUDED

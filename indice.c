@@ -1,4 +1,5 @@
 #include "indice.h"
+#include "validacion.h"
 /**
 void indice_crear (t_indice*):
 toma memoria para 100 elementos e inicializa la estructura a índice vacío.
@@ -6,7 +7,7 @@ toma memoria para 100 elementos e inicializa la estructura a índice vacío.
 void indice_crear (t_indice *indice, size_t nmemb, size_t tamanyo){
     indice->vindice=malloc(tamanyo*nmemb);
     if(!indice->vindice){
-        printf("ERROR AL CREAR EL INDICE...")
+        printf("ERROR AL CREAR EL INDICE...");
         return;
     }
     indice->cantidad_elementos_maxima = nmemb;
@@ -115,7 +116,7 @@ void indice_vaciar(t_indice* indice){
 int indice_cargar (t_indice*, const char* path):
 Carga el índice desde un archivo.
 **/
-int indice_cargar(const char* path, t_indice *indice, size_t tamanyo, int(*cmp)(const void*)(const void*)){
+int indice_cargar(const char* path, t_indice *indice, size_t tamanyo, int(*cmp)(const void*, const void*)){
     FILE* archbin = fopen(path,"rb");
     if(!archbin){
         printf("ERROR LA ABRIR EL ARCHIVO BINARIO...");
@@ -137,7 +138,7 @@ int indice_cargar(const char* path, t_indice *indice, size_t tamanyo, int(*cmp)(
         indice->cantidad_elementos_actual++;
         fread(&miembro,sizeof(t_Miembro),1,archbin);
     }
-    Bubble_Sort_Gen(indice->vindice,indice->cantidad_elementos_actual,sizeof(t_reg_indice),cmp);
+    Bubble_Sort_Gen(indice->vindice,indice->cantidad_elementos_actual,tamanyo,cmp);
     fclose(archbin);
     return OK;
 }
@@ -179,7 +180,7 @@ void IntercambioDinamicoGenerico (void *a, void *b, size_t tam)
 int comparar_dni (const void* a, const void* b){
     t_reg_indice* ra = (t_reg_indice*)a;
     t_reg_indice* pb = (t_reg_indice*)b;
-    return ra.dni - pb.dni;
+    return ra->dni - pb->dni;
 }
 
 

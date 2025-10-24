@@ -27,3 +27,38 @@
 1761157595 c:\users\admin\desktop\tp_topicos_com08_5900\tp_topicos_grupo09\funciones.h
 	"validacion.h"
 
+1761283151 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\funciones.c
+	"validacion.h"
+	"funciones.h"
+
+1761281637 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\validacion.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+	<ctype.h>
+	<time.h>
+	<stddef.h>
+
+1761282054 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\funciones.h
+	"validacion.h"
+
+1761282006 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\indice.c
+	"indice.h"
+	"validacion.h"
+
+1761281956 d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\indice.h
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+
+1761282962 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacion.h"
+	"funciones.h"
+	"indice.h"
+
+1761277175 source:d:\tp_topicos_com08_5900-master\tp_topicos_grupo09\validacion.c
+	"validacion.h"
+

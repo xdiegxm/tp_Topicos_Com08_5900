@@ -1,0 +1,48 @@
+82574075|Torres,  Jorge|12-11-1992|M|8-9-2020|ADULTO|18-2-2021|B|VIP|usuarioejemplo@galleta.com|Email tutor invalido
+55613660|Torres,  Luis Alberto|9-12-2008|F|26-7-2030|MENOR|16-12-2030|A|FAMILY|tutorresponsable@yahoo.com|Fecha afiliacion invalido
+64913672|Lopez,  Luis Alberto|10-4-2007|M|27-1-2025|ADULTO|14-2-2026|B|BASIC|usuarioejemplo@gmail.com|Fecha ultima cuota invalido
+11830359|Moya,  Pepe Raul|19-11-1972|F|30-12-1991|ADULTO|6-4-1994|B|VIP|usuarioejemplo@gmail.com|Email tutor invalido
+72558337|Lopez,  Laura Sofia|20-1-1983|M|4-10-1994|ADULTO|13-1-1995|B|VIP|usuarioejemplo@outlook.com|Email tutor invalido
+81726841|Martin,  Carlos Eduardo|13-7-2007|M|23-10-2027|ADULTO|10-8-2028|B|FAMILY|usuarioejemplo@galleta.com|Fecha afiliacion invalido
+78623790|Martin,  Marcela|14-2-1982|M|30-12-2010|ADULTO|21-5-2012|B|VIP|usuarioejemplo@gmail.com|Email tutor invalido
+89419082|Gonzalez,  Agustin|29-10-1984|M|17-8-1995|ADULTO|10-11-1995|A|BASIC|usuarioejemplo@gmail.com|Email tutor invalido
+83899271|Perez,  Jorge|26-3-1985|M|20-8-2007|ADULTO|11-3-2010|A|PREMIUM|usuarioejemplo@outlook.com|Email tutor invalido
+85240052|Rodriguez,  Jorge|7-8-2001|F|22-10-2014|ADULTO|14-3-2016|A|BASIC|emailinvalido|Email invalido
+38243572|Fernandez,  Luis Alberto|23-12-2008|M|17-4-2025|MENOR|9-12-2025|B|BASIC|tutorresponsable@galleta.com|Fecha ultima cuota invalido
+84274312|Torres,  Ana Maria|16-2-2006|F|1-7-2021|ADULTO|29-11-2022|B|BASIC|usuarioejemplo@outlook.com|Email tutor invalido
+21628582|Torres,  Ana Maria|13-5-1980|F|28-10-2004|ADULTO|2-1-2007|A|VIP|usuarioejemplo@outlook.com|Email tutor invalido
+73069725|Fernandez,  Luis Alberto|3-12-1966|M|12-10-1978|ADULTO|11-1-1979|B|VIP|usuarioejemplo@yahoo.com|Email tutor invalido
+61768207|Moya,  Pepe Raul|11-9-2001|M|18-1-2018|ADULTO|21-3-2019|B|PREMIUM|usuarioejemplo@galleta.com|Email tutor invalido
+87062831|Fernandez,  Agustin|1-9-1972|F|2-4-1988|ADULTO|19-8-1990|B|PREMIUM|usuarioejemplo@galleta.com|Email tutor invalido
+19843120|Sanchez,  Jorge|7-5-2001|F|13-2-2025|ADULTO|12-5-2027|A|VIP|usuarioejemplo@gmail.com|Fecha ultima cuota invalido
+30524997|Rodriguez,  Carlos Eduardo|23-7-2001|F|19-6-2022|ADULTO|21-4-2024|B|FAMILY|usuarioejemplo@gmail.com|Email tutor invalido
+30010831|Lopez,  Clara|4-4-2003|F|15-8-2029|ADULTO|12-3-2030|B|FAMILY|usuarioejemplo@galleta.com|Fecha afiliacion invalido
+22863663|Rodriguez,  Laura Sofia|28-1-1995|M|16-8-2012|ADULTO|3-2-2013|B|FAMILY|usuarioejemplo@galleta.com|Email tutor invalido
+40389837|Perez,  Luis Alberto|4-1-1992|M|23-4-2012|ADULTO|14-5-2013|B|BASIC|usuarioejemplo@outlook.com|Email tutor invalido
+70233142|Moya,  Ana Maria|13-9-1980|F|18-2-2005|ADULTO|27-3-2005|B|FAMILY|usuarioejemplo@outlook.com|Email tutor invalido
+94585668|Martin,  Carlos Eduardo|18-10-1999|F|28-7-2023|ADULTO|13-11-2025|A|VIP|usuarioejemplo@outlook.com|Fecha ultima cuota invalido
+12268000|Torres,  Agustin|13-5-1996|M|18-2-2025|ADULTO|5-1-2027|A|FAMILY|usuarioejemplo@yahoo.com|Fecha ultima cuota invalido
+69557014|Moya,  Pepe Raul|1-2-2002|F|21-5-2027|ADULTO|17-7-2027|A|BASIC|usuarioejemplo@galleta.com|Fecha afiliacion invalido
+25069132|Lopez,  Agustin|6-11-1990|M|29-7-2016|ADULTO|9-1-2018|A|PREMIUM|usuarioejemplo@yahoo.com|Email tutor invalido
+32180854|Gonzalez,  Laura Sofia|15-5-1996|F|11-11-2013|ADULTO|8-4-2014|A|PREMIUM|usuarioejemplo@yahoo.com|Email tutor invalido
+61446760|Torres,  Rosa|26-11-1984|F|15-8-2005|ADULTO|27-11-2007|A|VIP|usuarioejemplo@yahoo.com|Email tutor invalido
+90439887|Perez,  Clara|30-11-2007|M|11-5-2033|ADULTO|31-1-2034|A|VIP|usuarioejemplo@galleta.com|Fecha afiliacion invalido
+74507511|Martin,  Pepe Raul|16-3-2001|F|17-5-2021|ADULTO|18-1-2024|B|BASIC|usuarioejemplo@gmail.com|Email tutor invalido
+53835947|Rodriguez,  Marcela|16-3-1984|M|23-9-1996|ADULTO|7-5-1999|B|VIP|usuarioejemplo@yahoo.com|Email tutor invalido
+97808231|Lopez,  Marcela|27-9-2014|F|3-12-2041|MENOR|1-12-2042|A|VIP|tutorresponsable@gmail.com|Fecha afiliacion invalido
+52049019|Rodriguez,  Agustin|11-4-2013|M|18-8-2031|MENOR|4-5-2032|A|VIP|tutorresponsable@galleta.com|Fecha afiliacion invalido
+87080264|Galleta,  Marcela|29-1-1998|M|21-1-2021|ADULTO|12-9-2022|B|VIP|usuarioejemplo@yahoo.com|Email tutor invalido
+12276445|Moya,  Jorge|10-3-1973|M|14-2-1994|ADULTO|21-4-1994|A|FAMILY|usuarioejemplo@outlook.com|Email tutor invalido
+55680171|Moya,  Pepe Raul|26-10-1968|F|4-6-1995|ADULTO|21-9-1997|B|BASIC|usuarioejemplo@gmail.com|Email tutor invalido
+60139492|Moya,  Ana Maria|27-4-2008|F|2-6-2032|MENOR|2-10-2034|A|PREMIUM|tutorresponsable@gmail.com|Fecha afiliacion invalido
+28167814|Torres,  Pepe Raul|28-2-1991|X|27-2-2015|ADULTO|7-1-2016|A|FAMILY|usuarioejemplo@yahoo.com|Sexo invalido
+5592|Martin,  Agustin|25-6-1967|F|25-7-1995|ADULTO|21-1-1998|A|PREMIUM|usuarioejemplo@galleta.com|Dni invalido
+98783990|Torres,  Laura Sofia|7-5-1990|F|26-9-2012|ADULTO|22-1-2014|B|FAMILY|usuarioejemplo@gmail.com|Email tutor invalido
+79256595|Moya,  Jorge|14-10-1966|F|17-4-1978|ADULTO|11-7-1980|A|BASIC|usuarioejemplo@outlook.com|Email tutor invalido
+2768|Moya,  Clara|26-4-1982|F|18-1-1994|ADULTO|31-3-1994|B|PREMIUM|usuarioejemplo@galleta.com|Dni invalido
+82830291|Moya,  Marcela|40-13-2026|M|4-11-2037|MENOR|3-6-2039|A|BASIC|tutorresponsable@yahoo.com|Fecha nacimiento invalido
+27532466|Torres,  Pepe Raul|15-12-1986|F|19-7-2016|ADULTO|23-9-2017|B|BASIC|usuarioejemplo@yahoo.com|Email tutor invalido
+34524928|Perez,  Agustin|3-9-1990|F|24-4-2009|ADULTO|22-8-2009|B|FAMILY|usuarioejemplo@galleta.com|Email tutor invalido
+42062704|Perez,  Carlos Eduardo|26-4-1991|F|17-1-2007|ADULTO|28-10-2007|B|VIP|usuarioejemplo@gmail.com|Email tutor invalido
+60306926|Martin,  Laura Sofia|5-9-1981|F|6-2-1995|ADULTO|22-12-1996|A|BASIC|usuarioejemplo@gmail.com|Email tutor invalido
+66939438|Lopez,  Luis Alberto|1-7-1971|F|23-6-2000|ADULTO|16-5-2002|A|FAMILY|usuarioejemplo@galleta.com|Email tutor invalido

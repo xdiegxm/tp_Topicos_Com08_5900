@@ -1,5 +1,8 @@
 #ifndef INDICE_H_INCLUDED
 #define INDICE_H_INCLUDED
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define CANTIDAD_ELEMENTOS 100
 #define INCREMENTO 1.3
 #define OK 1
@@ -26,7 +29,7 @@ int indice_buscar (const t_indice *indice, const void *registro, size_t tamanyo,
 int indice_vacio (const t_indice *indice);
 int indice_lleno (const t_indice *indice);
 void indice_vaciar(t_indice* indice);
-int indice_cargar(const char* path, t_indice *indice, void *vreg_ind, size_t tamanyo, int(*cmp)(const void*)(const void*));
+int indice_cargar(const char* path, t_indice *indice, size_t tamanyo, int(*cmp)(const void*, const void*));
 /**********************************************************
 *                       COMPARACION                       *
 ***********************************************************/
