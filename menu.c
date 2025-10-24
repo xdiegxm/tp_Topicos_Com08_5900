@@ -52,7 +52,7 @@ int validar_miembro(const t_Miembro *miembro)
 {
     if (miembro->DNI < 1000000)
         return ERROR;
-    // asumo que la validación es exitosa si pasa un chequeo básico xd.
+    // asumo que la validaciÃ³n es exitosa si pasa un chequeo bÃ¡sico xd.
     return OK;
 }
 
@@ -150,7 +150,7 @@ int miembro_dar_baja(t_indice *indice, FILE *fp)
     printf("Ingrese DNI del miembro a dar de baja: ");
     if (scanf("%ld", &dni_a_dar_baja) != 1)
     {
-        printf("Error: Entrada invalida.\n");
+        printf("ERROR: Entrada invalida.\n");
         while (getchar() != '\n');
         return ERROR;
     }
@@ -175,14 +175,14 @@ int miembro_dar_baja(t_indice *indice, FILE *fp)
 
     if (miembro_actual.Estado == 'B')
     {
-        printf("ADVERTENCIA: El miembro %ld ya estaba marcado como Baja en el archivo.\n", dni_a_dar_baja);
+        printf("ERROR: El miembro %ld ya estaba marcado como baja en el archivo.\n", dni_a_dar_baja);
     }
 
     miembro_actual.Estado = 'B'; // Actualizar el estado a Baja
 
     if (escribir_registro_archivo(fp, nro_reg_archivo, &miembro_actual) != OK)
     {
-        printf("ERROR: No se pudo escribir el registro marcado como Baja.\n");
+        printf("ERROR: No se pudo escribri el registro marcado como Baja.\n");
         return ERROR;
     }
 
@@ -208,7 +208,7 @@ int miembro_mostrar_info(const t_indice *indice, FILE *fp)
     printf("Ingrese DNI del miembro a mostrar: ");
     if (scanf("%ld", &dni_a_mostrar) != 1)
     {
-        printf("Error: Entrada invalida.\n");
+        printf("ERRORR Entrada invalida.\n");
         while (getchar() != '\n');
         return ERROR;
     }
@@ -230,3 +230,4 @@ int miembro_mostrar_info(const t_indice *indice, FILE *fp)
     miembro_mostrar_datos(&miembro_info);
     return OK;
 }
+
