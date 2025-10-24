@@ -53,7 +53,9 @@ int Validar_MailTutor(const char *mail, const char *categ){
     if(strcmp(categ,"MENOR")==0)
        return validar_Mail(mail);
 
-    return (mail==NULL || strlen(mail)==0)? TRUE:FALSE;
+    if (mail == NULL || strlen(mail) == 0)
+        return TRUE;
+    return validar_Mail(mail);
 }
 int Validar_Afiliacion(const t_Fecha *fechaAfil, const t_Fecha *fechaNac, const t_Fecha *fechaProc){
 
@@ -66,7 +68,6 @@ int Validar_Afiliacion(const t_Fecha *fechaAfil, const t_Fecha *fechaNac, const 
 
     return TRUE;
 }
-
 int Validar_UltimaCuota(const t_Fecha *fechaUltCuota, const t_Fecha *fechaAfil, const t_Fecha *fechaProc){
 
     if(difFechas(fechaUltCuota,fechaAfil).anio>=0)
@@ -76,7 +77,6 @@ int Validar_UltimaCuota(const t_Fecha *fechaUltCuota, const t_Fecha *fechaAfil, 
 
     return TRUE;
 }
-
 int Validar_Nacimiento(const t_Fecha *fechaNac, const t_Fecha *fechaProc){
     if(!validar_Fecha(fechaNac))
         return FALSE;
@@ -89,36 +89,6 @@ int Validar_Nacimiento(const t_Fecha *fechaNac, const t_Fecha *fechaProc){
 /**********************************************************
 **                FUNCIONES STRING                        *
 ***********************************************************/
-int validarStringAndTwo(char *str, int tam){
-    int i = 0;
-    int found = 0;
-    int first = 0;
-    int second = 0;
-    int isspace = 1;
-    while(i < tam && found!= 1){
-        if(second== 0 && ES_LETRA(str[i])){
-            if(first ==0){
-                isspace = 0;
-                first = 1;
-            }
-            else{
-                if(isspace == 1){
-                    second =1;
-                }
-            }
-        }
-        else{
-            if(str[i] == '\0'){
-                found = 1;
-            }
-            else{
-                isspace =1;
-            }
-        }
-        i++;
-    }
-    return (second ==1 && found ==1)?TRUE:FALSE;
-}
 void str_toupper(char* str){
     while(*str){
         *str = toUpper(*str);
@@ -223,16 +193,4 @@ int validar_Fecha(const t_Fecha *fecha){
         return FALSE;
 
     return TRUE;
-}
-int cmpFecha(const t_Fecha f1, const t_Fecha f2){
-    if(f1.anio != f2.anio){
-        return (f1.anio>f2.anio)?1:-1;
-    }
-    if(f1.mes != f2.mes){
-        return (f1.mes>f2.mes)?1:-1;
-    }
-    if(f1.dia != f2.dia){
-        return (f1.dia > f2.dia)?1:-1;
-    }
-    return 0;
 }
